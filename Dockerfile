@@ -3,7 +3,7 @@ RUN apt-get update && apt-get install -y python3.12 python3-pip git build-essent
 RUN git clone https://github.com/thu-ml/SageAttention.git /SageAttention
 RUN cd /SageAttention && \
     sed -i 's/HAS_SM80 = False/HAS_SM80 = True/' setup.py && \
-    python setup.py bdist_wheel && \
+    python3 setup.py bdist_wheel && \
     ls -lh
 
 
