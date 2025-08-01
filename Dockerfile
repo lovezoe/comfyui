@@ -11,6 +11,4 @@ RUN pip install --no-cache-dir -r /opt/ComfyUI/requirements.txt && \
     pip install --no-cache-dir -r /opt/ComfyUI/custom_nodes/ComfyUI-Manager/requirements.txt && \
     pip install --no-cache-dir -r /opt/ComfyUI/custom_nodes/ComfyUI-GGUF/requirements.txt
 
-RUN pip install --no-cache-dir SageAttention
-
-CMD ["python", "/opt/ComfyUI/comfyui.py", "--listen", "0.0.0.0", "--use-sage-attention"]
+CMD ["python", "/opt/ComfyUI/main.py", "--listen", "0.0.0.0"]
