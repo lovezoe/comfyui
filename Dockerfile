@@ -1,9 +1,13 @@
 FROM nvidia/cuda:12.8.1-cudnn-devel-ubuntu24.04 AS builder
-RUN apt-get update && apt-get install -y python3.12 python3-pip python3-packaging git build-essential cmake
+RUN apt-get update && apt-get install -y python3.12 python3-venv git build-essential cmake
 RUN git clone https://github.com/thu-ml/SageAttention.git /SageAttention
 WORKDIR /SageAttention
 RUN sed -i 's/HAS_SM80 = False/HAS_SM80 = True/' setup.py
-RUN python3 setup.py bdist_wheel
+RUN python3 -m .venv
+RUN . .venv/bin/activate && \
+    pip install packaging && 
+    pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 && \
+    python3 setup.py bdist_wheel
 RUN ls -lh
 
 
