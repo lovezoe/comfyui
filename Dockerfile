@@ -3,7 +3,7 @@ RUN apt-get update && apt-get install -y python3.12 python3-venv git build-essen
 RUN git clone https://github.com/thu-ml/SageAttention.git /SageAttention
 WORKDIR /SageAttention
 RUN sed -i 's/HAS_SM80 = False/HAS_SM80 = True/' setup.py
-RUN python3 -m .venv
+RUN python3 -m venv .venv
 RUN . .venv/bin/activate && \
     pip3 install packaging && \
     pip3 install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 && \
