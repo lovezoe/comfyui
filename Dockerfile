@@ -17,4 +17,4 @@ COPY --from=sage /SageAttention/dist/sageattention-2.2.0-cp312-cp312-linux_x86_6
 
 RUN pip install --no-cache-dir /tmp/sageattention-2.2.0-cp312-cp312-linux_x86_64.whl && rm /tmp/sageattention-2.2.0-cp312-cp312-linux_x86_64.whl
 
-CMD ["python", "/opt/ComfyUI/main.py", "--listen", "0.0.0.0"]
+CMD ["python", "/opt/ComfyUI/main.py", "--listen", "0.0.0.0", "--use-sage-attention"]
