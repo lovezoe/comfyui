@@ -1,3 +1,5 @@
+FROM ghcr.io/lovezoe/sage-attention:latest as sage
+
 FROM python:3.12-slim
 ARG VERSION=v0.3.47
 RUN apt-get update && apt-get install -y git
@@ -11,6 +13,8 @@ RUN pip install --no-cache-dir -r /opt/ComfyUI/requirements.txt && \
     pip install --no-cache-dir -r /opt/ComfyUI/custom_nodes/ComfyUI-Manager/requirements.txt && \
     pip install --no-cache-dir -r /opt/ComfyUI/custom_nodes/ComfyUI-GGUF/requirements.txt
 
-# COPY --from=builder /SageAttention/SageAttention.whl /tmp/SageAttention.whl
+COPY --from=sage /SageAttention/dist/sageattention-2.2.0-cp312-cp312-linux_x86_64.whl /tmp/sageattention-2.2.0-cp312-cp312-linux_x86_64.whl
+
+RUN pip install --no-cache-dir /tmp/sageattention-2.2.0-cp312-cp312-linux_x86_64.whl && rm /tmp/sageattention-2.2.0-cp312-cp312-linux_x86_64.whl
 
 CMD ["python", "/opt/ComfyUI/main.py", "--listen", "0.0.0.0"]
