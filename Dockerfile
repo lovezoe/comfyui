@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r /opt/ComfyUI/requirements.txt && \
     pip install --no-cache-dir -r /opt/ComfyUI/custom_nodes/ComfyUI-Manager/requirements.txt && \
     pip install --no-cache-dir -r /opt/ComfyUI/custom_nodes/ComfyUI-GGUF/requirements.txt
 
-COPY --from=sage /SageAttention/dist/sageattention-2.2.0-cp312-cp312-linux_x86_64.whl /tmp/sageattention-2.2.0-cp312-cp312-linux_x86_64.whl
+COPY --from=sage /sageattention-2.2.0-cp312-cp312-linux_x86_64.whl /tmp/sageattention-2.2.0-cp312-cp312-linux_x86_64.whl
 
 RUN pip install --no-cache-dir /tmp/sageattention-2.2.0-cp312-cp312-linux_x86_64.whl && rm /tmp/sageattention-2.2.0-cp312-cp312-linux_x86_64.whl
 
