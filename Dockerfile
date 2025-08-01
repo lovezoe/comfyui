@@ -1,10 +1,11 @@
-FROM nvidia/cuda:12.8.1-cudnn-devel-ubuntu24.04 as builder
+FROM nvidia/cuda:12.8.1-cudnn-devel-ubuntu24.04 AS builder
 RUN apt-get update && apt-get install -y python3.12 python3-pip git build-essential cmake
 RUN git clone https://github.com/thu-ml/SageAttention.git /SageAttention
-RUN cd /SageAttention && \
-    sed -i 's/HAS_SM80 = False/HAS_SM80 = True/' setup.py && \
-    python3 setup.py bdist_wheel && \
-    ls -lh
+WORKDIR /SageAttention
+RUN pip3 install packaging
+RUN sed -i 's/HAS_SM80 = False/HAS_SM80 = True/' setup.py
+RUN python3 setup.py bdist_wheel
+RUN ls -lh
 
 
 FROM python:3.12-slim
