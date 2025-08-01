@@ -1,5 +1,5 @@
 FROM python:3.12-slim
-ARG VERSION=v0.3.7
+ARG VERSION=v0.3.47
 RUN apt-get update && apt-get install -y git
 RUN pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
