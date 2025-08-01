@@ -3,7 +3,7 @@ ARG VERSION=v0.3.7
 RUN apt-get update && apt-get install -y git
 RUN pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
-RUN git clone --depth=1 --tag=${VERSION} https://github.com/comfyanonymous/ComfyUI.git /opt/ComfyUI && \
+RUN git clone --depth=1 --branch=${VERSION} https://github.com/comfyanonymous/ComfyUI.git /opt/ComfyUI && \
     git clone --depth=1 https://github.com/Comfy-Org/ComfyUI-Manager.git /opt/ComfyUI/custom_nodes/ComfyUI-Manager && \
     git clone --depth=1 https://github.com/city96/ComfyUI-GGUF.git /opt/ComfyUI/custom_nodes/ComfyUI-GGUF
 
