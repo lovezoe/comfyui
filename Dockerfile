@@ -1,6 +1,6 @@
 FROM ghcr.io/lovezoe/sage-attention:latest as sage
 
-FROM python:3.12-bookworm
+FROM ubuntu/python:3.12-24.04
 ARG VERSION=v0.3.47
 RUN apt-get update && apt-get install -y git
 RUN pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
