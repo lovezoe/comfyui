@@ -2,8 +2,6 @@ FROM ghcr.io/lovezoe/sage-attention:latest as sage
 
 FROM ghcr.io/lovezoe/python:latest
 ARG VERSION=v0.3.47
-SHELL ["/bin/bash", "-c"]
-RUN apt-get update && apt-get install -y git
 RUN pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
 
 RUN git clone --depth=1 --branch=${VERSION} https://github.com/comfyanonymous/ComfyUI.git /opt/ComfyUI && \
