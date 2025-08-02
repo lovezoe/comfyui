@@ -1,6 +1,6 @@
 FROM ghcr.io/lovezoe/sage-attention:latest as sage
 
-FROM ubuntu/python:3.12-24.04
+FROM ghcr.io/lovezoe/python:latest
 ARG VERSION=v0.3.47
 SHELL ["/bin/bash", "-c"]
 RUN apt-get update && apt-get install -y git
